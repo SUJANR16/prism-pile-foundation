@@ -349,13 +349,14 @@ a {
 
 /* =========================================================
    LARGE LOGO AREA
+   UPDATED - BIGGER FOR LARGE RINGS
 ========================================================= */
 
 .prism-loading-logo-area {
   position: relative;
 
-  width: 320px;
-  height: 320px;
+  width: 400px;
+  height: 400px;
 
   display: flex;
   align-items: center;
@@ -378,7 +379,6 @@ a {
   align-items: center;
   justify-content: center;
 
-  /* No visible square around logo */
   background: transparent;
 
   border-radius: 0;
@@ -403,7 +403,7 @@ a {
 
 
 /* =========================================================
-   HUGE OUTER YELLOW RING
+   RINGS
 ========================================================= */
 
 .prism-loading-ring {
@@ -415,11 +415,14 @@ a {
 }
 
 
-/* OUTER RING */
+/* =========================================================
+   OUTER YELLOW RING
+   UPDATED: 370px
+========================================================= */
 
 .prism-ring-yellow {
-  width: 285px;
-  height: 285px;
+  width: 370px;
+  height: 370px;
 
   border: 5px solid transparent;
 
@@ -427,20 +430,21 @@ a {
   border-right-color: #facc15;
 
   box-shadow:
-    0 0 10px rgba(250, 204, 21, 0.45),
-    0 0 25px rgba(250, 204, 21, 0.18);
+    0 0 12px rgba(250, 204, 21, 0.55),
+    0 0 30px rgba(250, 204, 21, 0.25);
 
   animation: prismRingClockwise 2.2s linear infinite;
 }
 
 
 /* =========================================================
-   LARGE INNER BLUE RING
+   INNER BLUE RING
+   UPDATED: 305px
 ========================================================= */
 
 .prism-ring-blue {
-  width: 235px;
-  height: 235px;
+  width: 305px;
+  height: 305px;
 
   border: 3px solid transparent;
 
@@ -448,8 +452,8 @@ a {
   border-left-color: #3b82f6;
 
   box-shadow:
-    0 0 10px rgba(59, 130, 246, 0.4),
-    0 0 20px rgba(59, 130, 246, 0.15);
+    0 0 12px rgba(59, 130, 246, 0.5),
+    0 0 25px rgba(59, 130, 246, 0.2);
 
   animation: prismRingReverse 3s linear infinite;
 }
@@ -755,8 +759,8 @@ a {
 @media (max-width: 768px) {
 
   .prism-loading-logo-area {
-    width: 280px;
-    height: 280px;
+    width: 310px;
+    height: 310px;
   }
 
   .prism-loading-logo-box {
@@ -770,16 +774,18 @@ a {
     box-shadow: none;
   }
 
+  /* Bigger mobile yellow ring */
   .prism-ring-yellow {
-    width: 245px;
-    height: 245px;
+    width: 285px;
+    height: 285px;
 
     border-width: 4px;
   }
 
+  /* Bigger mobile blue ring */
   .prism-ring-blue {
-    width: 200px;
-    height: 200px;
+    width: 235px;
+    height: 235px;
 
     border-width: 3px;
   }
