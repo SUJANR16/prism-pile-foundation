@@ -1,13 +1,114 @@
 @import "tailwindcss";
 
 /* =========================================================
-   PRISM PILE FOUNDATION & CONSTRUCTION
-   GLOBAL CSS + ANIMATIONS
+   GLOBAL RESET
 ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 320px;
+
+  background: #ffffff;
+  color: #172554;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: #facc15;
+  color: #172554;
+}
 
 
 /* =========================================================
-   PAGE ANIMATIONS
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #172554;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8;
+}
+
+
+/* =========================================================
+   GENERAL SAFETY
+========================================================= */
+
+section {
+  width: 100%;
+  max-width: 100%;
+}
+
+main {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  overflow-wrap: break-word;
+}
+
+
+/* =========================================================
+   GENERAL ANIMATIONS
 ========================================================= */
 
 @keyframes fadeIn {
@@ -70,11 +171,6 @@
   }
 }
 
-
-/* =========================================================
-   ANIMATION CLASSES
-========================================================= */
-
 .animate-fadeIn {
   animation: fadeIn 0.8s ease-out;
 }
@@ -97,158 +193,744 @@
 
 
 /* =========================================================
-   SMOOTH SCROLL
+   PRISM DESKTOP NAVBAR
 ========================================================= */
 
-html {
-  scroll-behavior: smooth;
+.prism-desktop-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 9000;
+
+  width: 100%;
+  height: 82px;
+
+  background: rgba(255, 255, 255, 0.98);
+
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.prism-navbar-inner {
+  width: 100%;
+  max-width: 1440px;
+
+  height: 100%;
+
+  margin: 0 auto;
+
+  padding: 0 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
 }
 
 
 /* =========================================================
-   BODY
+   DESKTOP BRAND
 ========================================================= */
 
-body {
-  margin: 0;
-  padding: 0;
-  background: white;
+.prism-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  flex-shrink: 0;
+
   color: #172554;
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.prism-brand-logo {
+  width: 58px;
+  height: 58px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+.prism-brand-text {
+  color: #172554;
+
+  font-size: 15px;
+
+  font-weight: 900;
+
+  line-height: 1.25;
+
+  letter-spacing: 0.4px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   DESKTOP NAVIGATION
+========================================================= */
+
+.prism-desktop-nav {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  height: 100%;
+}
+
+.prism-nav-link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+
+  padding: 0 12px;
+
+  color: #172554;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.prism-nav-link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+
+  height: 3px;
+
+  background: #facc15;
+
+  transform: scaleX(0);
+
+  transform-origin: center;
+
+  transition: transform 0.25s ease;
+}
+
+.prism-nav-link:hover {
+  color: #1d4ed8;
+}
+
+.prism-nav-link:hover::after,
+.prism-nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.prism-nav-link.active {
+  color: #1d4ed8;
+}
+
+
+/* =========================================================
+   DESKTOP QUOTE BUTTON
+========================================================= */
+
+.prism-quote-button {
+  margin-left: 12px;
+
+  padding: 12px 20px;
+
+  border-radius: 6px;
+
+  background: #172554;
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.prism-quote-button:hover {
+  background: #1d4ed8;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   ONLY HAMBURGER
+   NO STRIP
+========================================================= */
+
+.prism-mobile-menu-button {
+  display: none;
+
+  position: fixed;
+
+  top: 18px;
+  right: 18px;
+
+  z-index: 10001;
+
+  width: 50px;
+  height: 50px;
+
+  padding: 0;
+
+  border: none;
+  outline: none;
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 5px 20px rgba(15, 23, 42, 0.18);
+
+  cursor: pointer;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.prism-mobile-menu-button:hover {
+  transform: scale(1.05);
+}
+
+.prism-mobile-menu-button span {
+  display: block;
+
+  width: 23px;
+  height: 3px;
+
+  border-radius: 10px;
+
+  background: #172554;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+
+/* =========================================================
+   HAMBURGER → X
+========================================================= */
+
+.prism-mobile-menu-button.menu-open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.prism-mobile-menu-button.menu-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.prism-mobile-menu-button.menu-open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   MOBILE OVERLAY
+========================================================= */
+
+.prism-mobile-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9998;
+
+  background: rgba(2, 6, 23, 0.55);
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.prism-mobile-overlay.show {
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   MOBILE DRAWER
+========================================================= */
+
+.prism-mobile-drawer {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+
+  z-index: 10000;
+
+  width: min(88vw, 380px);
+  height: 100dvh;
+
+  background: #ffffff;
+
+  box-shadow:
+    -15px 0 40px rgba(15, 23, 42, 0.2);
+
+  transform: translateX(100%);
+
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
-
-/* =========================================================
-   TEXT SELECTION
-========================================================= */
-
-::selection {
-  background: #facc15;
-  color: #172554;
+.prism-mobile-drawer.open {
+  transform: translateX(0);
 }
 
 
 /* =========================================================
-   IMAGES
+   MOBILE MENU HEADER
 ========================================================= */
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+.prism-mobile-header {
+  min-height: 92px;
 
+  padding: 18px;
 
-/* =========================================================
-   LINKS
-========================================================= */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-a {
-  text-decoration: none;
-}
+  gap: 15px;
 
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-
-/* =========================================================
-   CUSTOM SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-
-::-webkit-scrollbar-thumb {
   background: #172554;
-  border-radius: 10px;
+
+  border-bottom: 4px solid #facc15;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #1d4ed8;
+.prism-mobile-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+
+  color: #ffffff;
+}
+
+.prism-mobile-brand img {
+  width: 50px;
+  height: 50px;
+
+  flex-shrink: 0;
+
+  object-fit: contain;
+}
+
+.prism-mobile-brand div {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.prism-mobile-brand strong {
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  line-height: 1.3;
+
+  letter-spacing: 0.3px;
+}
+
+.prism-mobile-brand span {
+  margin-top: 3px;
+
+  color: #facc15;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
 }
 
 
 /* =========================================================
-   PRISM LOGO ANIMATIONS
+   MOBILE CLOSE BUTTON
 ========================================================= */
 
-@keyframes prismLogoAppear {
-  0% {
-    opacity: 0;
-    transform: scale(0.5) rotate(-15deg);
-  }
+.prism-mobile-close {
+  width: 40px;
+  height: 40px;
 
-  50% {
-    opacity: 1;
-    transform: scale(1.08) rotate(3deg);
-  }
+  flex-shrink: 0;
 
-  75% {
-    transform: scale(0.97) rotate(-1deg);
-  }
+  border: 1px solid rgba(255, 255, 255, 0.25);
 
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: #ffffff;
+
+  font-size: 28px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
-@keyframes prismLogoFloat {
-  0% {
-    transform: translateY(0);
-  }
+.prism-mobile-close:hover {
+  background: rgba(255, 255, 255, 0.18);
 
-  50% {
-    transform: translateY(-7px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
+  transform: rotate(90deg);
 }
 
-@keyframes prismLogoGlow {
-  0% {
-    filter:
-      drop-shadow(0 0 0 rgba(250, 204, 21, 0))
-      drop-shadow(0 0 0 rgba(37, 99, 235, 0));
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+.prism-mobile-nav {
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 18px 15px 30px;
+}
+
+.prism-mobile-link {
+  position: relative;
+
+  padding: 16px 15px;
+
+  border-bottom: 1px solid #e2e8f0;
+
+  color: #172554;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    padding-left 0.25s ease;
+}
+
+.prism-mobile-link:hover {
+  color: #1d4ed8;
+
+  background: #f8fafc;
+
+  padding-left: 22px;
+}
+
+.prism-mobile-link.active {
+  color: #1d4ed8;
+
+  background: #eff6ff;
+}
+
+.prism-mobile-link.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 10px;
+  bottom: 10px;
+
+  width: 4px;
+
+  border-radius: 0 5px 5px 0;
+
+  background: #facc15;
+}
+
+
+/* =========================================================
+   MOBILE QUOTE
+========================================================= */
+
+.prism-mobile-quote {
+  margin-top: 22px;
+
+  padding: 15px;
+
+  border-radius: 7px;
+
+  background: #172554;
+
+  color: #ffffff;
+
+  text-align: center;
+
+  font-size: 14px;
+  font-weight: 900;
+
+  letter-spacing: 0.5px;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.prism-mobile-quote:hover {
+  background: #1d4ed8;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .prism-desktop-navbar {
+    height: 76px;
   }
 
-  50% {
-    filter:
-      drop-shadow(0 0 18px rgba(250, 204, 21, 0.45))
-      drop-shadow(0 0 25px rgba(37, 99, 235, 0.25));
+  .prism-navbar-inner {
+    padding: 0 22px;
+
+    gap: 15px;
   }
 
-  100% {
-    filter:
-      drop-shadow(0 0 0 rgba(250, 204, 21, 0))
-      drop-shadow(0 0 0 rgba(37, 99, 235, 0));
+  .prism-brand-logo {
+    width: 52px;
+    height: 52px;
+  }
+
+  .prism-brand-text {
+    font-size: 12px;
+  }
+
+  .prism-desktop-nav {
+    gap: 0;
+  }
+
+  .prism-nav-link {
+    padding: 0 8px;
+
+    font-size: 13px;
+  }
+
+  .prism-nav-link::after {
+    left: 8px;
+    right: 8px;
+  }
+
+  .prism-quote-button {
+    margin-left: 7px;
+
+    padding: 10px 14px;
+
+    font-size: 11px;
   }
 }
 
 
 /* =========================================================
-   PRISM 5 SECOND LOADING SCREEN
+   MOBILE / TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+  /*
+    REMOVE DESKTOP NAVBAR COMPLETELY
+  */
+
+  .prism-desktop-navbar {
+    display: none !important;
+  }
+
+
+  /*
+    ONLY SHOW HAMBURGER
+  */
+
+  .prism-mobile-menu-button {
+    display: flex;
+  }
+
+
+  /*
+    PREVENT HORIZONTAL SCROLL
+  */
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: hidden;
+  }
+
+  main {
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: hidden;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .prism-mobile-menu-button {
+    top: 14px;
+    right: 14px;
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 9px;
+  }
+
+  .prism-mobile-menu-button span {
+    width: 21px;
+    height: 3px;
+  }
+
+  .prism-mobile-drawer {
+    width: min(90vw, 350px);
+  }
+
+  .prism-mobile-header {
+    min-height: 86px;
+
+    padding: 15px;
+  }
+
+  .prism-mobile-brand img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .prism-mobile-brand strong {
+    font-size: 10px;
+  }
+
+  .prism-mobile-brand span {
+    font-size: 7px;
+  }
+
+  .prism-mobile-link {
+    padding: 14px 13px;
+
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .prism-mobile-menu-button {
+    top: 10px;
+    right: 10px;
+
+    width: 42px;
+    height: 42px;
+  }
+
+  .prism-mobile-menu-button span {
+    width: 19px;
+  }
+
+  .prism-mobile-drawer {
+    width: 92vw;
+  }
+}
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+========================================================= */
+
+@media (max-width: 768px) and (orientation: landscape) {
+
+  .prism-mobile-header {
+    min-height: 70px;
+  }
+
+  .prism-mobile-nav {
+    padding-top: 8px;
+  }
+
+  .prism-mobile-link {
+    padding: 10px 15px;
+  }
+}
+
+
+/* =========================================================
+   PRISM LOADING SCREEN
 ========================================================= */
 
 .prism-loading-screen {
   position: fixed;
   inset: 0;
+
   z-index: 99999;
+
+  width: 100vw;
+  height: 100dvh;
 
   display: flex;
   align-items: center;
@@ -259,7 +941,7 @@ a {
   background:
     radial-gradient(
       circle at center,
-      rgba(30, 64, 175, 0.28),
+      rgba(30, 64, 175, 0.30),
       transparent 42%
     ),
     #061a3a;
@@ -276,30 +958,36 @@ a {
 .prism-loading-closing {
   opacity: 0;
   visibility: hidden;
+
   transform: scale(1.03);
 }
 
 
 /* =========================================================
-   BACKGROUND GLOW
+   LOADING GLOW
 ========================================================= */
 
 .prism-loading-glow {
   position: absolute;
 
-  width: 550px;
-  height: 550px;
+  width: 500px;
+  height: 500px;
+
+  max-width: 90vw;
+  max-height: 90vw;
 
   border-radius: 50%;
 
-  background: rgba(37, 99, 235, 0.13);
+  background: rgba(37, 99, 235, 0.14);
 
   filter: blur(90px);
 
-  animation: prismLoadingGlow 3s ease-in-out infinite;
+  animation:
+    prismLoadingGlow 3s ease-in-out infinite;
 }
 
 @keyframes prismLoadingGlow {
+
   0% {
     transform: scale(0.85);
     opacity: 0.35;
@@ -318,92 +1006,74 @@ a {
 
 
 /* =========================================================
-   MAIN LOADING CONTENT
+   LOADING CONTENT
 ========================================================= */
 
 .prism-loading-content {
   position: relative;
+
   z-index: 2;
 
+  width: 100%;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
 
   text-align: center;
 
-  animation: prismLoadingAppear 0.8s ease-out;
+  padding: 20px;
+
+  animation:
+    prismLoadingAppear 0.8s ease-out;
 }
 
 @keyframes prismLoadingAppear {
+
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.96);
+
+    transform:
+      translateY(20px)
+      scale(0.96);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+
+    transform:
+      translateY(0)
+      scale(1);
   }
 }
 
 
 /* =========================================================
-   LARGE LOGO AREA
-   UPDATED - BIGGER FOR LARGE RINGS
+   LOADING LOGO AREA
 ========================================================= */
 
 .prism-loading-logo-area {
   position: relative;
 
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
+
+  max-width: 92vw;
+  max-height: 92vw;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
+
+  flex-shrink: 0;
 }
 
 
 /* =========================================================
-   LOGO
-========================================================= */
-
-.prism-loading-logo-box {
-  position: relative;
-  z-index: 10;
-
-  width: 135px;
-  height: 135px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: transparent;
-
-  border-radius: 0;
-
-  padding: 0;
-
-  box-shadow: none;
-
-  animation: prismLogoFloat 2.5s ease-in-out infinite;
-}
-
-.prism-loading-logo-box img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: contain;
-
-  background: transparent;
-
-  border: none;
-}
-
-
-/* =========================================================
-   RINGS
+   YELLOW RING
 ========================================================= */
 
 .prism-loading-ring {
@@ -414,15 +1084,12 @@ a {
   pointer-events: none;
 }
 
-
-/* =========================================================
-   OUTER YELLOW RING
-   UPDATED: 370px
-========================================================= */
-
 .prism-ring-yellow {
-  width: 370px;
-  height: 370px;
+  width: 470px;
+  height: 470px;
+
+  max-width: 94%;
+  max-height: 94%;
 
   border: 5px solid transparent;
 
@@ -430,21 +1097,24 @@ a {
   border-right-color: #facc15;
 
   box-shadow:
-    0 0 12px rgba(250, 204, 21, 0.55),
-    0 0 30px rgba(250, 204, 21, 0.25);
+    0 0 15px rgba(250, 204, 21, 0.65),
+    0 0 38px rgba(250, 204, 21, 0.30);
 
-  animation: prismRingClockwise 2.2s linear infinite;
+  animation:
+    prismRingClockwise 2.2s linear infinite;
 }
 
 
 /* =========================================================
-   INNER BLUE RING
-   UPDATED: 305px
+   BLUE RING
 ========================================================= */
 
 .prism-ring-blue {
-  width: 305px;
-  height: 305px;
+  width: 385px;
+  height: 385px;
+
+  max-width: 77%;
+  max-height: 77%;
 
   border: 3px solid transparent;
 
@@ -452,18 +1122,73 @@ a {
   border-left-color: #3b82f6;
 
   box-shadow:
-    0 0 12px rgba(59, 130, 246, 0.5),
-    0 0 25px rgba(59, 130, 246, 0.2);
+    0 0 12px rgba(59, 130, 246, 0.60),
+    0 0 30px rgba(59, 130, 246, 0.25);
 
-  animation: prismRingReverse 3s linear infinite;
+  animation:
+    prismRingReverse 3s linear infinite;
 }
 
 
 /* =========================================================
-   RING ANIMATIONS
+   LOADING LOGO
+========================================================= */
+
+.prism-loading-logo-box {
+  position: absolute !important;
+
+  z-index: 20 !important;
+
+  width: 230px !important;
+  height: 230px !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  background: transparent !important;
+
+  border: none !important;
+
+  border-radius: 0 !important;
+
+  box-shadow: none !important;
+
+  overflow: visible !important;
+}
+
+.prism-loading-logo-box img {
+  display: block !important;
+
+  width: 230px !important;
+  height: 230px !important;
+
+  max-width: none !important;
+  max-height: none !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+
+  background: transparent !important;
+
+  object-fit: contain !important;
+
+  object-position: center !important;
+}
+
+
+/* =========================================================
+   LOADING RING ANIMATIONS
 ========================================================= */
 
 @keyframes prismRingClockwise {
+
   from {
     transform: rotate(0deg);
   }
@@ -474,6 +1199,7 @@ a {
 }
 
 @keyframes prismRingReverse {
+
   from {
     transform: rotate(360deg);
   }
@@ -485,11 +1211,13 @@ a {
 
 
 /* =========================================================
-   COMPANY NAME
+   LOADING COMPANY NAME
 ========================================================= */
 
 .prism-loading-company {
-  margin-top: 30px;
+  margin-top: 25px;
+
+  width: 100%;
 
   text-align: center;
 }
@@ -497,9 +1225,9 @@ a {
 .prism-loading-company h1 {
   margin: 0;
 
-  color: white;
+  color: #ffffff;
 
-  font-size: 38px;
+  font-size: clamp(28px, 4vw, 42px);
 
   font-weight: 900;
 
@@ -513,11 +1241,11 @@ a {
 
   color: #facc15;
 
-  font-size: 13px;
+  font-size: clamp(9px, 1.3vw, 13px);
 
   font-weight: 700;
 
-  letter-spacing: 4px;
+  letter-spacing: clamp(2px, 0.4vw, 4px);
 
   line-height: 1.5;
 }
@@ -535,7 +1263,7 @@ a {
 
   gap: 12px;
 
-  margin-top: 32px;
+  margin-top: 28px;
 }
 
 .prism-loading-status > span {
@@ -567,7 +1295,8 @@ a {
 
   background: #facc15;
 
-  animation: prismLoadingDot 1.2s ease-in-out infinite;
+  animation:
+    prismLoadingDot 1.2s ease-in-out infinite;
 }
 
 .prism-loading-dots i:nth-child(2) {
@@ -579,28 +1308,31 @@ a {
 }
 
 @keyframes prismLoadingDot {
+
   0%,
   100% {
     opacity: 0.3;
+
     transform: translateY(0);
   }
 
   50% {
     opacity: 1;
+
     transform: translateY(-5px);
   }
 }
 
 
 /* =========================================================
-   PROGRESS BAR
+   LOADING PROGRESS
 ========================================================= */
 
 .prism-loading-progress {
   width: 220px;
   height: 3px;
 
-  margin-top: 25px;
+  margin-top: 24px;
 
   overflow: hidden;
 
@@ -617,10 +1349,12 @@ a {
 
   border-radius: 20px;
 
-  animation: prismLoadingProgress 5s linear forwards;
+  animation:
+    prismLoadingProgress 5s linear forwards;
 }
 
 @keyframes prismLoadingProgress {
+
   from {
     width: 0%;
   }
@@ -632,25 +1366,321 @@ a {
 
 
 /* =========================================================
+   LOADING TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .prism-loading-logo-area {
+    width: 430px;
+    height: 430px;
+  }
+
+  .prism-ring-yellow {
+    width: 405px;
+    height: 405px;
+  }
+
+  .prism-ring-blue {
+    width: 330px;
+    height: 330px;
+  }
+
+  .prism-loading-logo-box {
+    width: 180px !important;
+    height: 180px !important;
+  }
+
+  .prism-loading-logo-box img {
+    width: 180px !important;
+    height: 180px !important;
+  }
+}
+
+
+/* =========================================================
+   LOADING SMALL TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .prism-loading-logo-area {
+    width: 400px;
+    height: 400px;
+  }
+
+  .prism-ring-yellow {
+    width: 375px;
+    height: 375px;
+  }
+
+  .prism-ring-blue {
+    width: 305px;
+    height: 305px;
+  }
+
+  .prism-loading-logo-box {
+    width: 165px !important;
+    height: 165px !important;
+  }
+
+  .prism-loading-logo-box img {
+    width: 165px !important;
+    height: 165px !important;
+  }
+}
+
+
+/* =========================================================
+   LOADING MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .prism-loading-content {
+    padding: 15px;
+  }
+
+  .prism-loading-logo-area {
+    width: 360px;
+    height: 360px;
+
+    max-width: 94vw;
+    max-height: 94vw;
+  }
+
+  .prism-ring-yellow {
+    width: 340px;
+    height: 340px;
+
+    border-width: 4px;
+  }
+
+  .prism-ring-blue {
+    width: 275px;
+    height: 275px;
+
+    border-width: 3px;
+  }
+
+  .prism-loading-logo-box {
+    width: 140px !important;
+    height: 140px !important;
+  }
+
+  .prism-loading-logo-box img {
+    width: 140px !important;
+    height: 140px !important;
+  }
+
+  .prism-loading-company {
+    margin-top: 18px;
+  }
+
+  .prism-loading-company h1 {
+    font-size: 28px;
+
+    letter-spacing: 2px;
+  }
+
+  .prism-loading-company p {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+  .prism-loading-status {
+    margin-top: 22px;
+  }
+
+  .prism-loading-progress {
+    width: 190px;
+  }
+}
+
+
+/* =========================================================
+   LOADING SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .prism-loading-content {
+    padding: 10px;
+  }
+
+  .prism-loading-logo-area {
+    width: 300px;
+    height: 300px;
+
+    max-width: 92vw;
+    max-height: 92vw;
+  }
+
+  .prism-ring-yellow {
+    width: 285px;
+    height: 285px;
+
+    border-width: 3px;
+  }
+
+  .prism-ring-blue {
+    width: 230px;
+    height: 230px;
+
+    border-width: 2px;
+  }
+
+  .prism-loading-logo-box {
+    width: 115px !important;
+    height: 115px !important;
+  }
+
+  .prism-loading-logo-box img {
+    width: 115px !important;
+    height: 115px !important;
+  }
+
+  .prism-loading-company {
+    margin-top: 12px;
+  }
+
+  .prism-loading-company h1 {
+    font-size: 24px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .prism-loading-company p {
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .prism-loading-status {
+    margin-top: 18px;
+  }
+
+  .prism-loading-status > span {
+    font-size: 10px;
+
+    letter-spacing: 3px;
+  }
+
+  .prism-loading-progress {
+    width: 160px;
+
+    margin-top: 18px;
+  }
+}
+
+
+/* =========================================================
+   LOADING VERY SMALL PHONE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .prism-loading-logo-area {
+    width: 270px;
+    height: 270px;
+  }
+
+  .prism-ring-yellow {
+    width: 255px;
+    height: 255px;
+  }
+
+  .prism-ring-blue {
+    width: 205px;
+    height: 205px;
+  }
+
+  .prism-loading-logo-box {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .prism-loading-logo-box img {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .prism-loading-company h1 {
+    font-size: 21px;
+  }
+
+  .prism-loading-company p {
+    font-size: 7px;
+  }
+}
+
+
+/* =========================================================
+   GENERAL CARD EFFECTS
+========================================================= */
+
+.prism-card {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.prism-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 20px 40px rgba(15, 23, 42, 0.15);
+}
+
+.prism-image {
+  transition:
+    transform 0.7s ease;
+}
+
+.prism-image:hover {
+  transform: scale(1.08);
+}
+
+.prism-button {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.prism-button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 25px rgba(15, 23, 42, 0.2);
+}
+
+
+/* =========================================================
    GLOW
 ========================================================= */
 
 @keyframes glow {
+
   0% {
-    box-shadow: 0 0 0 rgba(250, 204, 21, 0);
+    box-shadow:
+      0 0 0 rgba(250, 204, 21, 0);
   }
 
   50% {
-    box-shadow: 0 0 30px rgba(250, 204, 21, 0.35);
+    box-shadow:
+      0 0 30px rgba(250, 204, 21, 0.35);
   }
 
   100% {
-    box-shadow: 0 0 0 rgba(250, 204, 21, 0);
+    box-shadow:
+      0 0 0 rgba(250, 204, 21, 0);
   }
 }
 
 .animate-glow {
-  animation: glow 2s ease-in-out infinite;
+  animation:
+    glow 2s ease-in-out infinite;
 }
 
 
@@ -659,6 +1689,7 @@ a {
 ========================================================= */
 
 @keyframes floating {
+
   0% {
     transform: translateY(0);
   }
@@ -673,15 +1704,17 @@ a {
 }
 
 .animate-floating {
-  animation: floating 3s ease-in-out infinite;
+  animation:
+    floating 3s ease-in-out infinite;
 }
 
 
 /* =========================================================
-   PULSE
+   PRISM PULSE
 ========================================================= */
 
 @keyframes prismPulse {
+
   0% {
     transform: scale(1);
     opacity: 1;
@@ -699,114 +1732,8 @@ a {
 }
 
 .prism-pulse {
-  animation: prismPulse 2s ease-in-out infinite;
-}
-
-
-/* =========================================================
-   CARD HOVER
-========================================================= */
-
-.prism-card {
-  transition:
-    transform 0.4s ease,
-    box-shadow 0.4s ease;
-}
-
-.prism-card:hover {
-  transform: translateY(-8px);
-
-  box-shadow:
-    0 20px 40px rgba(15, 23, 42, 0.15);
-}
-
-
-/* =========================================================
-   IMAGE HOVER
-========================================================= */
-
-.prism-image {
-  transition: transform 0.7s ease;
-}
-
-.prism-image:hover {
-  transform: scale(1.08);
-}
-
-
-/* =========================================================
-   BUTTON HOVER
-========================================================= */
-
-.prism-button {
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.prism-button:hover {
-  transform: translateY(-3px);
-
-  box-shadow:
-    0 12px 25px rgba(15, 23, 42, 0.2);
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 768px) {
-
-  .prism-loading-logo-area {
-    width: 310px;
-    height: 310px;
-  }
-
-  .prism-loading-logo-box {
-    width: 110px;
-    height: 110px;
-
-    background: transparent;
-    border-radius: 0;
-    padding: 0;
-
-    box-shadow: none;
-  }
-
-  /* Bigger mobile yellow ring */
-  .prism-ring-yellow {
-    width: 285px;
-    height: 285px;
-
-    border-width: 4px;
-  }
-
-  /* Bigger mobile blue ring */
-  .prism-ring-blue {
-    width: 235px;
-    height: 235px;
-
-    border-width: 3px;
-  }
-
-  .prism-loading-company {
-    margin-top: 25px;
-  }
-
-  .prism-loading-company h1 {
-    font-size: 29px;
-    letter-spacing: 2px;
-  }
-
-  .prism-loading-company p {
-    font-size: 9px;
-    letter-spacing: 2.5px;
-  }
-
-  .prism-loading-progress {
-    width: 180px;
-  }
+  animation:
+    prismPulse 2s ease-in-out infinite;
 }
 
 
@@ -820,7 +1747,9 @@ a {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+
     animation-iteration-count: 1 !important;
+
     scroll-behavior: auto !important;
   }
 }

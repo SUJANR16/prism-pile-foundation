@@ -25,30 +25,26 @@ export default function LoadingScreen({ duration = 5000 }) {
   }
 
   return (
-    <div
-      className={`prism-loading-screen ${
-        closing ? "prism-loading-closing" : ""
-      }`}
-    >
-      {/* Background Glow */}
+    <div className={`prism-loading-screen ${closing ? "prism-loading-closing" : ""}`}>
+      
       <div className="prism-loading-glow"></div>
 
       <div className="prism-loading-content">
 
-        {/* LOGO */}
+        {/* LOGO + RINGS */}
         <div className="prism-loading-logo-area">
 
-          {/* Yellow Ring */}
+          {/* OUTER RING */}
           <div className="prism-loading-ring prism-ring-yellow"></div>
 
-          {/* Blue Ring */}
+          {/* INNER RING */}
           <div className="prism-loading-ring prism-ring-blue"></div>
 
-          {/* Actual Logo - NO SQUARE BOX */}
-          <div className="prism-loading-logo">
+          {/* SMALL LOGO */}
+          <div className="prism-loading-logo-box">
             <img
               src={logo}
-              alt="PRISM PILE FOUNDATION & CONSTRUCTION"
+              alt="PRISM"
             />
           </div>
 
@@ -57,7 +53,7 @@ export default function LoadingScreen({ duration = 5000 }) {
         {/* COMPANY NAME */}
         <div className="prism-loading-company">
           <h1>PRISM PILE</h1>
-          <p>FOUNDATION & CONSTRUCTION</p>
+          <p>FOUNDATION &amp; CONSTRUCTION</p>
         </div>
 
         {/* LOADING */}
@@ -71,7 +67,7 @@ export default function LoadingScreen({ duration = 5000 }) {
           </div>
         </div>
 
-        {/* PROGRESS BAR */}
+        {/* PROGRESS */}
         <div className="prism-loading-progress">
           <div className="prism-loading-progress-bar"></div>
         </div>
